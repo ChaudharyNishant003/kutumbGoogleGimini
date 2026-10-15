@@ -1,0 +1,10 @@
+# Uploaded property documents (RERA certs, brochures) are runtime content,
+# never executable code. Blocks PHP execution even if a malicious file is
+# ever uploaded here.
+<FilesMatch "\.(php|phtml|php\d)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>

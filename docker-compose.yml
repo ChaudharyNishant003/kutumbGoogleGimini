@@ -1,0 +1,94 @@
+# Local dev/UAT stack for Kutumb Realty. Fully isolated from other projects:
+# its own network, named volume, and ports (created automatically per the
+# `name:` below). Start with `docker compose up -d`, stop with `docker compose down`.
+name: kutumb
+
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      # Restores the local backup on first boot only (empty data dir).
+      - ./database/local_backup_20260906.sql:/docker-entrypoint-initdb.d/01-restore.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -uroot -p\"$$MARIADB_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    # Not exposed to the host on purpose — only the app container can reach it.
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASS: ${MARIADB_PASSWORD}
+      SITE_URL: http://localhost:8000
+      # AI Calling feature: encrypts ai_settings secrets. Generated once via
+      # sodium_crypto_secretbox_keygen() — local dev value, not a real secret
+      # (this stack's data never leaves this machine).
+      APP_ENCRYPTION_KEY: "Q4Edc57Il87f3NNKak7RQEAWAMcXTBbkCmQQSF0ENVc="
+    ports:
+      - "8000:80"
+    volumes:
+      - ./uploads:/var/www/html/uploads
+
+  voice:
+    build: ./voice
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_started
+    environment: &voice_env
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: ${MARIADB_DATABASE}
+      DB_USER: ${MARIADB_USER}
+      DB_PASS: ${MARIADB_PASSWORD}
+      APP_ENCRYPTION_KEY: "Q4Edc57Il87f3NNKak7RQEAWAMcXTBbkCmQQSF0ENVc="
+      PHP_BASE_URL: http://app:80
+    ports:
+      - "8100:8100"
+    # Local Docker only for now — not deployed to Railway yet, per the
+    # explicit "test locally first" decision for this feature.
+
+  # Job loop (dialer, post-call, reminders, scans, retention purge). Same
+  # image as voice; on Railway this is the `worker` service.
+  worker:
+    build: ./voice
+    restart: unless-stopped
+    command: ["python", "-m", "kutumb_voice.worker"]
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_started
+    environment: *voice_env
+
+  # On Railway this is a cron service (*/5 * * * *) running the watchdog
+  # once; locally it loops every 5 minutes instead.
+  watchdog:
+    build: ./voice
+    restart: unless-stopped
+    command: ["python", "-m", "kutumb_voice.watchdog", "--loop", "300"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment: *voice_env
+
+volumes:
+  db_data:

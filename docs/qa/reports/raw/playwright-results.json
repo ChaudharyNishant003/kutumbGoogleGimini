@@ -1,0 +1,1769 @@
+{
+  "suites": [],
+  "specsFlat": [
+    {
+      "id": "QF-AUTH-dashboard.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-dashboard.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 4500
+    },
+    {
+      "id": "QF-AUTH-properties.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-properties.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-enquiries.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-enquiries.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2800
+    },
+    {
+      "id": "QF-AUTH-follow",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-follow-ups.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2500
+    },
+    {
+      "id": "QF-AUTH-saved",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-saved-searches.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2600
+    },
+    {
+      "id": "QF-AUTH-corridors.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-corridors.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2400
+    },
+    {
+      "id": "QF-AUTH-blog",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-blog-list.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-team.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-team.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2700
+    },
+    {
+      "id": "QF-AUTH-testimonials.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-testimonials.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 3200
+    },
+    {
+      "id": "QF-AUTH-bin.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-bin.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2800
+    },
+    {
+      "id": "QF-AUTH-admins.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-admins.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2600
+    },
+    {
+      "id": "QF-AUTH-settings.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-settings.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 3000
+    },
+    {
+      "id": "QF-AUTH-001",
+      "title": "Login flow › QF-AUTH-001: valid owner login succeeds",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 3500
+    },
+    {
+      "id": "QF-AUTH-002",
+      "title": "Login flow › QF-AUTH-002: invalid password shows generic error (no user enumeration)",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-AUTH-003",
+      "title": "Login flow › QF-AUTH-003: nonexistent username shows the SAME generic error",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-AUTH-004",
+      "title": "Login flow › QF-AUTH-004: logout destroys session, protected page redirects again",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 4500
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php-admin: admin role (not owner) also cannot reach admins.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php: agent role cannot reach settings.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php-admin: admin role (not owner) also cannot reach settings.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 3400
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php: agent role cannot reach admins.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 14900
+    },
+    {
+      "id": "QF-RBAC-sidebar",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-sidebar: agent does not see the Manage Admins link in sidebar",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 4100
+    },
+    {
+      "id": "QF-UX-001",
+      "title": "RBAC — vertical privilege escalation › QF-UX-001 (finding, not a hard-fail): Settings link is NOT role-gated in the sidebar, unlike Manage Admins",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 6600
+    },
+    {
+      "id": "QF-VAL-101",
+      "title": "Property CRUD (Tier 2) › QF-VAL-101: property form blocks submission of empty required fields (HTML5 validation)",
+      "file": "admin-crud.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 7100
+    },
+    {
+      "id": "QF-FUNC-102",
+      "title": "Corridor duplicate-name handling › QF-FUNC-102: creating a corridor with a name that already exists shows a friendly error, not a crash",
+      "file": "admin-crud.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 7200
+    },
+    {
+      "id": "QF-FUNC-103",
+      "title": "Leads inline update (AJAX) › QF-FUNC-103: changing a lead status saves via AJAX without a full page reload",
+      "file": "admin-crud.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 6200
+    },
+    {
+      "id": "QF-RBAC-201",
+      "title": "Owner-protection rule › QF-RBAC-201: an owner account cannot be deleted, even by another owner",
+      "file": "admin-crud.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 6000
+    },
+    {
+      "id": "QF-FUNC-001",
+      "title": "Home › QF-FUNC-001: loads, shows nav and corridor ticker",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 3500
+    },
+    {
+      "id": "QF-FUNC-002",
+      "title": "Home › QF-FUNC-002: hero search form navigates to filtered properties",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 18900
+    },
+    {
+      "id": "QF-FUNC-101",
+      "title": "Property CRUD (Tier 2) › QF-FUNC-101: create a property, appears in list, then soft-delete to Bin, then restore",
+      "file": "admin-crud.spec.js",
+      "project": "chromium-desktop",
+      "status": "failed",
+      "duration": 23200
+    },
+    {
+      "id": "QF-FUNC-003",
+      "title": "All Properties › QF-FUNC-003: lists properties, filter by category narrows results",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 6900
+    },
+    {
+      "id": "QF-FUNC-004",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-004: property detail renders sidebar CTA and enquiry form",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 8100
+    },
+    {
+      "id": "QF-FUNC-005",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-005: enquiry submits successfully with valid data",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 8000
+    },
+    {
+      "id": "QF-VAL-001",
+      "title": "All Properties › QF-VAL-001: filter with no matches shows an honest empty state, not a crash",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 16900
+    },
+    {
+      "id": "QF-FUNC-006",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-006 (frustrated customer): rage-clicking submit does not create duplicate toasts/errors",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 19600
+    },
+    {
+      "id": "QF-VAL-002",
+      "title": "Property Detail + Enquiry Form › QF-VAL-002: empty required fields are rejected client-side (required attr)",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 19600
+    },
+    {
+      "id": "QF-VAL-003",
+      "title": "Property Detail + Enquiry Form › QF-VAL-003 (frustrated customer): pasting emoji/very long text into message does not break the page",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 20700
+    },
+    {
+      "id": "QF-SEC-101",
+      "title": "Contact › QF-SEC-101: honeypot field is present and positioned off-screen (CSS-hidden, not DOM-hidden — bots that skip CSS still fill it)",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 20400
+    },
+    {
+      "id": "QF-FUNC-008",
+      "title": "Contact › QF-FUNC-008 (frustrated customer): AJAX submit never navigates, so there is nothing to \"resubmit\" via back button",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 9500
+    },
+    {
+      "id": "QF-FUNC-009",
+      "title": "Compare › QF-FUNC-009: adding properties to compare shows the sticky bar, max 4 enforced",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 17700
+    },
+    {
+      "id": "QF-FUNC-010",
+      "title": "Saved Searches (Get Alerts) › QF-FUNC-010: saved-search form submits successfully",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 6400
+    },
+    {
+      "id": "QF-FUNC-011",
+      "title": "Corridor Guide › QF-FUNC-011: corridor page shows stat row and listings",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-FUNC-007",
+      "title": "Contact › QF-FUNC-007: contact form submits and shows success toast",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "failed",
+      "duration": 45500
+    },
+    {
+      "id": "QF-VAL-004",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-004: EMI calculates live without a submit, handles zero price gracefully",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "failed",
+      "duration": 8200
+    },
+    {
+      "id": "QF-VAL-005",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-005: EMI at 0% interest rate does not divide by zero",
+      "file": "public-journeys.spec.js",
+      "project": "chromium-desktop",
+      "status": "failed",
+      "duration": 9400
+    },
+    {
+      "id": "QF-AUTH-dashboard.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-dashboard.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 27000
+    },
+    {
+      "id": "QF-AUTH-properties.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-properties.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4800
+    },
+    {
+      "id": "QF-AUTH-enquiries.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-enquiries.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 3400
+    },
+    {
+      "id": "QF-AUTH-follow",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-follow-ups.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-AUTH-blog",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-blog-list.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4200
+    },
+    {
+      "id": "QF-AUTH-corridors.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-corridors.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5500
+    },
+    {
+      "id": "QF-AUTH-team.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-team.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4500
+    },
+    {
+      "id": "QF-AUTH-testimonials.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-testimonials.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5900
+    },
+    {
+      "id": "QF-AUTH-saved",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-saved-searches.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 19500
+    },
+    {
+      "id": "QF-AUTH-admins.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-admins.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4400
+    },
+    {
+      "id": "QF-AUTH-bin.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-bin.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 14300
+    },
+    {
+      "id": "QF-AUTH-settings.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-settings.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4600
+    },
+    {
+      "id": "QF-AUTH-002",
+      "title": "Login flow › QF-AUTH-002: invalid password shows generic error (no user enumeration)",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5100
+    },
+    {
+      "id": "QF-AUTH-001",
+      "title": "Login flow › QF-AUTH-001: valid owner login succeeds",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 7700
+    },
+    {
+      "id": "QF-AUTH-003",
+      "title": "Login flow › QF-AUTH-003: nonexistent username shows the SAME generic error",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4600
+    },
+    {
+      "id": "QF-AUTH-004",
+      "title": "Login flow › QF-AUTH-004: logout destroys session, protected page redirects again",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 7100
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php: agent role cannot reach admins.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 6800
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php-admin: admin role (not owner) also cannot reach admins.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5000
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php: agent role cannot reach settings.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5800
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php-admin: admin role (not owner) also cannot reach settings.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-RBAC-sidebar",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-sidebar: agent does not see the Manage Admins link in sidebar",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5100
+    },
+    {
+      "id": "QF-UX-001",
+      "title": "RBAC — vertical privilege escalation › QF-UX-001 (finding, not a hard-fail): Settings link is NOT role-gated in the sidebar, unlike Manage Admins",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5000
+    },
+    {
+      "id": "QF-VAL-101",
+      "title": "Property CRUD (Tier 2) › QF-VAL-101: property form blocks submission of empty required fields (HTML5 validation)",
+      "file": "admin-crud.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 7800
+    },
+    {
+      "id": "QF-FUNC-102",
+      "title": "Corridor duplicate-name handling › QF-FUNC-102: creating a corridor with a name that already exists shows a friendly error, not a crash",
+      "file": "admin-crud.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 6400
+    },
+    {
+      "id": "QF-FUNC-103",
+      "title": "Leads inline update (AJAX) › QF-FUNC-103: changing a lead status saves via AJAX without a full page reload",
+      "file": "admin-crud.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 6600
+    },
+    {
+      "id": "QF-FUNC-101",
+      "title": "Property CRUD (Tier 2) › QF-FUNC-101: create a property, appears in list, then soft-delete to Bin, then restore",
+      "file": "admin-crud.spec.js",
+      "project": "firefox-desktop",
+      "status": "failed",
+      "duration": 19700
+    },
+    {
+      "id": "QF-RBAC-201",
+      "title": "Owner-protection rule › QF-RBAC-201: an owner account cannot be deleted, even by another owner",
+      "file": "admin-crud.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4600
+    },
+    {
+      "id": "QF-FUNC-001",
+      "title": "Home › QF-FUNC-001: loads, shows nav and corridor ticker",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 10100
+    },
+    {
+      "id": "QF-FUNC-002",
+      "title": "Home › QF-FUNC-002: hero search form navigates to filtered properties",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 13000
+    },
+    {
+      "id": "QF-VAL-001",
+      "title": "All Properties › QF-VAL-001: filter with no matches shows an honest empty state, not a crash",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 5700
+    },
+    {
+      "id": "QF-FUNC-004",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-004: property detail renders sidebar CTA and enquiry form",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 4500
+    },
+    {
+      "id": "QF-FUNC-003",
+      "title": "All Properties › QF-FUNC-003: lists properties, filter by category narrows results",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 20300
+    },
+    {
+      "id": "QF-FUNC-005",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-005: enquiry submits successfully with valid data",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "failed",
+      "duration": 12800
+    },
+    {
+      "id": "QF-FUNC-006",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-006 (frustrated customer): rage-clicking submit does not create duplicate toasts/errors",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 8400
+    },
+    {
+      "id": "QF-VAL-003",
+      "title": "Property Detail + Enquiry Form › QF-VAL-003 (frustrated customer): pasting emoji/very long text into message does not break the page",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 6500
+    },
+    {
+      "id": "QF-VAL-002",
+      "title": "Property Detail + Enquiry Form › QF-VAL-002: empty required fields are rejected client-side (required attr)",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 10300
+    },
+    {
+      "id": "QF-FUNC-007",
+      "title": "Contact › QF-FUNC-007: contact form submits and shows success toast",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 12500
+    },
+    {
+      "id": "QF-FUNC-008",
+      "title": "Contact › QF-FUNC-008 (frustrated customer): AJAX submit never navigates, so there is nothing to \"resubmit\" via back button",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 10600
+    },
+    {
+      "id": "QF-SEC-101",
+      "title": "Contact › QF-SEC-101: honeypot field is present and positioned off-screen (CSS-hidden, not DOM-hidden — bots that skip CSS still fill it)",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 26500
+    },
+    {
+      "id": "QF-FUNC-010",
+      "title": "Saved Searches (Get Alerts) › QF-FUNC-010: saved-search form submits successfully",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 6700
+    },
+    {
+      "id": "QF-FUNC-011",
+      "title": "Corridor Guide › QF-FUNC-011: corridor page shows stat row and listings",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-VAL-004",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-004: EMI calculates live without a submit, handles zero price gracefully",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "failed",
+      "duration": 4200
+    },
+    {
+      "id": "QF-FUNC-009",
+      "title": "Compare › QF-FUNC-009: adding properties to compare shows the sticky bar, max 4 enforced",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "failed",
+      "duration": 32500
+    },
+    {
+      "id": "QF-VAL-005",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-005: EMI at 0% interest rate does not divide by zero",
+      "file": "public-journeys.spec.js",
+      "project": "firefox-desktop",
+      "status": "failed",
+      "duration": 13300
+    },
+    {
+      "id": "QF-AUTH-properties.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-properties.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-dashboard.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-dashboard.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 3200
+    },
+    {
+      "id": "QF-AUTH-enquiries.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-enquiries.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2500
+    },
+    {
+      "id": "QF-AUTH-follow",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-follow-ups.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2800
+    },
+    {
+      "id": "QF-AUTH-blog",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-blog-list.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2300
+    },
+    {
+      "id": "QF-AUTH-saved",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-saved-searches.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 3300
+    },
+    {
+      "id": "QF-AUTH-team.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-team.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2700
+    },
+    {
+      "id": "QF-AUTH-corridors.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-corridors.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 3100
+    },
+    {
+      "id": "QF-AUTH-testimonials.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-testimonials.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-bin.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-bin.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 3200
+    },
+    {
+      "id": "QF-AUTH-settings.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-settings.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2500
+    },
+    {
+      "id": "QF-AUTH-admins.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-admins.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-001",
+      "title": "Login flow › QF-AUTH-001: valid owner login succeeds",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5800
+    },
+    {
+      "id": "QF-AUTH-002",
+      "title": "Login flow › QF-AUTH-002: invalid password shows generic error (no user enumeration)",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 6100
+    },
+    {
+      "id": "QF-AUTH-003",
+      "title": "Login flow › QF-AUTH-003: nonexistent username shows the SAME generic error",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5600
+    },
+    {
+      "id": "QF-AUTH-004",
+      "title": "Login flow › QF-AUTH-004: logout destroys session, protected page redirects again",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5900
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php: agent role cannot reach admins.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5700
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php-admin: admin role (not owner) also cannot reach admins.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 6200
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php: agent role cannot reach settings.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 6000
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php-admin: admin role (not owner) also cannot reach settings.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5200
+    },
+    {
+      "id": "QF-RBAC-sidebar",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-sidebar: agent does not see the Manage Admins link in sidebar",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5500
+    },
+    {
+      "id": "QF-UX-001",
+      "title": "RBAC — vertical privilege escalation › QF-UX-001 (finding, not a hard-fail): Settings link is NOT role-gated in the sidebar, unlike Manage Admins",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 5800
+    },
+    {
+      "id": "QF-VAL-101",
+      "title": "Property CRUD (Tier 2) › QF-VAL-101: property form blocks submission of empty required fields (HTML5 validation)",
+      "file": "admin-crud.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 7400
+    },
+    {
+      "id": "QF-FUNC-102",
+      "title": "Corridor duplicate-name handling › QF-FUNC-102: creating a corridor with a name that already exists shows a friendly error, not a crash",
+      "file": "admin-crud.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 9200
+    },
+    {
+      "id": "QF-FUNC-101",
+      "title": "Property CRUD (Tier 2) › QF-FUNC-101: create a property, appears in list, then soft-delete to Bin, then restore",
+      "file": "admin-crud.spec.js",
+      "project": "webkit-desktop",
+      "status": "failed",
+      "duration": 20200
+    },
+    {
+      "id": "QF-FUNC-103",
+      "title": "Leads inline update (AJAX) › QF-FUNC-103: changing a lead status saves via AJAX without a full page reload",
+      "file": "admin-crud.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 7900
+    },
+    {
+      "id": "QF-FUNC-001",
+      "title": "Home › QF-FUNC-001: loads, shows nav and corridor ticker",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-RBAC-201",
+      "title": "Owner-protection rule › QF-RBAC-201: an owner account cannot be deleted, even by another owner",
+      "file": "admin-crud.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 7300
+    },
+    {
+      "id": "QF-FUNC-002",
+      "title": "Home › QF-FUNC-002: hero search form navigates to filtered properties",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 8200
+    },
+    {
+      "id": "QF-FUNC-003",
+      "title": "All Properties › QF-FUNC-003: lists properties, filter by category narrows results",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 9300
+    },
+    {
+      "id": "QF-VAL-001",
+      "title": "All Properties › QF-VAL-001: filter with no matches shows an honest empty state, not a crash",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 4000
+    },
+    {
+      "id": "QF-FUNC-004",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-004: property detail renders sidebar CTA and enquiry form",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 3700
+    },
+    {
+      "id": "QF-FUNC-005",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-005: enquiry submits successfully with valid data",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 6700
+    },
+    {
+      "id": "QF-FUNC-006",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-006 (frustrated customer): rage-clicking submit does not create duplicate toasts/errors",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 9400
+    },
+    {
+      "id": "QF-VAL-002",
+      "title": "Property Detail + Enquiry Form › QF-VAL-002: empty required fields are rejected client-side (required attr)",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 4300
+    },
+    {
+      "id": "QF-VAL-003",
+      "title": "Property Detail + Enquiry Form › QF-VAL-003 (frustrated customer): pasting emoji/very long text into message does not break the page",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 8700
+    },
+    {
+      "id": "QF-SEC-101",
+      "title": "Contact › QF-SEC-101: honeypot field is present and positioned off-screen (CSS-hidden, not DOM-hidden — bots that skip CSS still fill it)",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 4400
+    },
+    {
+      "id": "QF-FUNC-007",
+      "title": "Contact › QF-FUNC-007: contact form submits and shows success toast",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 15500
+    },
+    {
+      "id": "QF-FUNC-008",
+      "title": "Contact › QF-FUNC-008 (frustrated customer): AJAX submit never navigates, so there is nothing to \"resubmit\" via back button",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 13400
+    },
+    {
+      "id": "QF-FUNC-010",
+      "title": "Saved Searches (Get Alerts) › QF-FUNC-010: saved-search form submits successfully",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 10100
+    },
+    {
+      "id": "QF-FUNC-011",
+      "title": "Corridor Guide › QF-FUNC-011: corridor page shows stat row and listings",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "passed",
+      "duration": 4000
+    },
+    {
+      "id": "QF-VAL-004",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-004: EMI calculates live without a submit, handles zero price gracefully",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "failed",
+      "duration": 4700
+    },
+    {
+      "id": "QF-FUNC-009",
+      "title": "Compare › QF-FUNC-009: adding properties to compare shows the sticky bar, max 4 enforced",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "failed",
+      "duration": 34300
+    },
+    {
+      "id": "QF-VAL-005",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-005: EMI at 0% interest rate does not divide by zero",
+      "file": "public-journeys.spec.js",
+      "project": "webkit-desktop",
+      "status": "failed",
+      "duration": 5100
+    },
+    {
+      "id": "QF-AUTH-dashboard.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-dashboard.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3700
+    },
+    {
+      "id": "QF-AUTH-properties.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-properties.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2800
+    },
+    {
+      "id": "QF-AUTH-enquiries.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-enquiries.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2700
+    },
+    {
+      "id": "QF-AUTH-saved",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-saved-searches.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2500
+    },
+    {
+      "id": "QF-AUTH-follow",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-follow-ups.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2600
+    },
+    {
+      "id": "QF-AUTH-blog",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-blog-list.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3000
+    },
+    {
+      "id": "QF-AUTH-corridors.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-corridors.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3000
+    },
+    {
+      "id": "QF-AUTH-team.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-team.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2700
+    },
+    {
+      "id": "QF-AUTH-testimonials.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-testimonials.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2700
+    },
+    {
+      "id": "QF-AUTH-admins.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-admins.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-bin.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-bin.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-AUTH-001",
+      "title": "Login flow › QF-AUTH-001: valid owner login succeeds",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2800
+    },
+    {
+      "id": "QF-AUTH-settings.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-settings.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3000
+    },
+    {
+      "id": "QF-AUTH-002",
+      "title": "Login flow › QF-AUTH-002: invalid password shows generic error (no user enumeration)",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 4000
+    },
+    {
+      "id": "QF-AUTH-003",
+      "title": "Login flow › QF-AUTH-003: nonexistent username shows the SAME generic error",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 4100
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php: agent role cannot reach admins.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3000
+    },
+    {
+      "id": "QF-AUTH-004",
+      "title": "Login flow › QF-AUTH-004: logout destroys session, protected page redirects again",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 5200
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php-admin: admin role (not owner) also cannot reach admins.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2100
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php: agent role cannot reach settings.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2600
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php-admin: admin role (not owner) also cannot reach settings.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-RBAC-sidebar",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-sidebar: agent does not see the Manage Admins link in sidebar",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2900
+    },
+    {
+      "id": "QF-UX-001",
+      "title": "RBAC — vertical privilege escalation › QF-UX-001 (finding, not a hard-fail): Settings link is NOT role-gated in the sidebar, unlike Manage Admins",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2700
+    },
+    {
+      "id": "QF-VAL-101",
+      "title": "Property CRUD (Tier 2) › QF-VAL-101: property form blocks submission of empty required fields (HTML5 validation)",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3700
+    },
+    {
+      "id": "QF-FUNC-102",
+      "title": "Corridor duplicate-name handling › QF-FUNC-102: creating a corridor with a name that already exists shows a friendly error, not a crash",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2800
+    },
+    {
+      "id": "QF-FUNC-103",
+      "title": "Leads inline update (AJAX) › QF-FUNC-103: changing a lead status saves via AJAX without a full page reload",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 3300
+    },
+    {
+      "id": "QF-FUNC-101",
+      "title": "Property CRUD (Tier 2) › QF-FUNC-101: create a property, appears in list, then soft-delete to Bin, then restore",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 11600
+    },
+    {
+      "id": "QF-RBAC-201",
+      "title": "Owner-protection rule › QF-RBAC-201: an owner account cannot be deleted, even by another owner",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 2600
+    },
+    {
+      "id": "QF-FUNC-002",
+      "title": "Home › QF-FUNC-002: hero search form navigates to filtered properties",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 5200
+    },
+    {
+      "id": "QF-FUNC-001",
+      "title": "Home › QF-FUNC-001: loads, shows nav and corridor ticker",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 6300
+    },
+    {
+      "id": "QF-FUNC-003",
+      "title": "All Properties › QF-FUNC-003: lists properties, filter by category narrows results",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 10400
+    },
+    {
+      "id": "QF-VAL-001",
+      "title": "All Properties › QF-VAL-001: filter with no matches shows an honest empty state, not a crash",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 6200
+    },
+    {
+      "id": "QF-FUNC-004",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-004: property detail renders sidebar CTA and enquiry form",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 6700
+    },
+    {
+      "id": "QF-FUNC-005",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-005: enquiry submits successfully with valid data",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 7600
+    },
+    {
+      "id": "QF-VAL-002",
+      "title": "Property Detail + Enquiry Form › QF-VAL-002: empty required fields are rejected client-side (required attr)",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 10200
+    },
+    {
+      "id": "QF-FUNC-006",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-006 (frustrated customer): rage-clicking submit does not create duplicate toasts/errors",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 13400
+    },
+    {
+      "id": "QF-VAL-003",
+      "title": "Property Detail + Enquiry Form › QF-VAL-003 (frustrated customer): pasting emoji/very long text into message does not break the page",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 24800
+    },
+    {
+      "id": "QF-SEC-101",
+      "title": "Contact › QF-SEC-101: honeypot field is present and positioned off-screen (CSS-hidden, not DOM-hidden — bots that skip CSS still fill it)",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 17100
+    },
+    {
+      "id": "QF-FUNC-007",
+      "title": "Contact › QF-FUNC-007: contact form submits and shows success toast",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 40600
+    },
+    {
+      "id": "QF-FUNC-008",
+      "title": "Contact › QF-FUNC-008 (frustrated customer): AJAX submit never navigates, so there is nothing to \"resubmit\" via back button",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "passed",
+      "duration": 26400
+    },
+    {
+      "id": "QF-FUNC-010",
+      "title": "Saved Searches (Get Alerts) › QF-FUNC-010: saved-search form submits successfully",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 60000
+    },
+    {
+      "id": "QF-FUNC-009",
+      "title": "Compare › QF-FUNC-009: adding properties to compare shows the sticky bar, max 4 enforced",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 60000
+    },
+    {
+      "id": "QF-FUNC-011",
+      "title": "Corridor Guide › QF-FUNC-011: corridor page shows stat row and listings",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 66000
+    },
+    {
+      "id": "QF-VAL-004",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-004: EMI calculates live without a submit, handles zero price gracefully",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 72000
+    },
+    {
+      "id": "QF-VAL-005",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-005: EMI at 0% interest rate does not divide by zero",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-android",
+      "status": "failed",
+      "duration": 26600
+    },
+    {
+      "id": "QF-AUTH-dashboard.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-dashboard.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 9500
+    },
+    {
+      "id": "QF-AUTH-properties.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-properties.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 10200
+    },
+    {
+      "id": "QF-AUTH-enquiries.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-enquiries.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 9700
+    },
+    {
+      "id": "QF-AUTH-follow",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-follow-ups.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 8600
+    },
+    {
+      "id": "QF-AUTH-saved",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-saved-searches.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 8100
+    },
+    {
+      "id": "QF-AUTH-blog",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-blog-list.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 8400
+    },
+    {
+      "id": "QF-AUTH-corridors.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-corridors.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 8300
+    },
+    {
+      "id": "QF-AUTH-team.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-team.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 9700
+    },
+    {
+      "id": "QF-AUTH-testimonials.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-testimonials.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 9700
+    },
+    {
+      "id": "QF-AUTH-bin.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-bin.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 9100
+    },
+    {
+      "id": "QF-AUTH-admins.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-admins.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 9100
+    },
+    {
+      "id": "QF-AUTH-settings.php",
+      "title": "Auth bypass sweep (Tier 1) › QF-AUTH-settings.php: unauthenticated visit redirects to login",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 10400
+    },
+    {
+      "id": "QF-AUTH-001",
+      "title": "Login flow › QF-AUTH-001: valid owner login succeeds",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 18400
+    },
+    {
+      "id": "QF-AUTH-002",
+      "title": "Login flow › QF-AUTH-002: invalid password shows generic error (no user enumeration)",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 19200
+    },
+    {
+      "id": "QF-AUTH-003",
+      "title": "Login flow › QF-AUTH-003: nonexistent username shows the SAME generic error",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 18000
+    },
+    {
+      "id": "QF-AUTH-004",
+      "title": "Login flow › QF-AUTH-004: logout destroys session, protected page redirects again",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 19500
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php: agent role cannot reach admins.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 17600
+    },
+    {
+      "id": "QF-RBAC-admins.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-admins.php-admin: admin role (not owner) also cannot reach admins.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 16100
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php: agent role cannot reach settings.php via direct URL",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 18100
+    },
+    {
+      "id": "QF-RBAC-settings.php",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-settings.php-admin: admin role (not owner) also cannot reach settings.php",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 14100
+    },
+    {
+      "id": "QF-RBAC-sidebar",
+      "title": "RBAC — vertical privilege escalation › QF-RBAC-sidebar: agent does not see the Manage Admins link in sidebar",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 16500
+    },
+    {
+      "id": "QF-UX-001",
+      "title": "RBAC — vertical privilege escalation › QF-UX-001 (finding, not a hard-fail): Settings link is NOT role-gated in the sidebar, unlike Manage Admins",
+      "file": "admin-auth-rbac.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 14900
+    },
+    {
+      "id": "QF-VAL-101",
+      "title": "Property CRUD (Tier 2) › QF-VAL-101: property form blocks submission of empty required fields (HTML5 validation)",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 20800
+    },
+    {
+      "id": "QF-FUNC-101",
+      "title": "Property CRUD (Tier 2) › QF-FUNC-101: create a property, appears in list, then soft-delete to Bin, then restore",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 33700
+    },
+    {
+      "id": "QF-FUNC-102",
+      "title": "Corridor duplicate-name handling › QF-FUNC-102: creating a corridor with a name that already exists shows a friendly error, not a crash",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 25500
+    },
+    {
+      "id": "QF-FUNC-103",
+      "title": "Leads inline update (AJAX) › QF-FUNC-103: changing a lead status saves via AJAX without a full page reload",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 20000
+    },
+    {
+      "id": "QF-RBAC-201",
+      "title": "Owner-protection rule › QF-RBAC-201: an owner account cannot be deleted, even by another owner",
+      "file": "admin-crud.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 14900
+    },
+    {
+      "id": "QF-FUNC-001",
+      "title": "Home › QF-FUNC-001: loads, shows nav and corridor ticker",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 6700
+    },
+    {
+      "id": "QF-FUNC-002",
+      "title": "Home › QF-FUNC-002: hero search form navigates to filtered properties",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 27200
+    },
+    {
+      "id": "QF-FUNC-003",
+      "title": "All Properties › QF-FUNC-003: lists properties, filter by category narrows results",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 33500
+    },
+    {
+      "id": "QF-VAL-001",
+      "title": "All Properties › QF-VAL-001: filter with no matches shows an honest empty state, not a crash",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 13200
+    },
+    {
+      "id": "QF-FUNC-004",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-004: property detail renders sidebar CTA and enquiry form",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 14000
+    },
+    {
+      "id": "QF-FUNC-005",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-005: enquiry submits successfully with valid data",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 39200
+    },
+    {
+      "id": "QF-FUNC-006",
+      "title": "Property Detail + Enquiry Form › QF-FUNC-006 (frustrated customer): rage-clicking submit does not create duplicate toasts/errors",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 39000
+    },
+    {
+      "id": "QF-VAL-002",
+      "title": "Property Detail + Enquiry Form › QF-VAL-002: empty required fields are rejected client-side (required attr)",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 15600
+    },
+    {
+      "id": "QF-VAL-003",
+      "title": "Property Detail + Enquiry Form › QF-VAL-003 (frustrated customer): pasting emoji/very long text into message does not break the page",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 38100
+    },
+    {
+      "id": "QF-FUNC-007",
+      "title": "Contact › QF-FUNC-007: contact form submits and shows success toast",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 31800
+    },
+    {
+      "id": "QF-SEC-101",
+      "title": "Contact › QF-SEC-101: honeypot field is present and positioned off-screen (CSS-hidden, not DOM-hidden — bots that skip CSS still fill it)",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 21200
+    },
+    {
+      "id": "QF-FUNC-008",
+      "title": "Contact › QF-FUNC-008 (frustrated customer): AJAX submit never navigates, so there is nothing to \"resubmit\" via back button",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 43400
+    },
+    {
+      "id": "QF-FUNC-009",
+      "title": "Compare › QF-FUNC-009: adding properties to compare shows the sticky bar, max 4 enforced",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 38700
+    },
+    {
+      "id": "QF-FUNC-011",
+      "title": "Corridor Guide › QF-FUNC-011: corridor page shows stat row and listings",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "passed",
+      "duration": 7100
+    },
+    {
+      "id": "QF-FUNC-010",
+      "title": "Saved Searches (Get Alerts) › QF-FUNC-010: saved-search form submits successfully",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 34100
+    },
+    {
+      "id": "QF-VAL-004",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-004: EMI calculates live without a submit, handles zero price gracefully",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 8700
+    },
+    {
+      "id": "QF-VAL-005",
+      "title": "EMI Calculator (frustrated customer edge cases) › QF-VAL-005: EMI at 0% interest rate does not divide by zero",
+      "file": "public-journeys.spec.js",
+      "project": "mobile-ios",
+      "status": "failed",
+      "duration": 7500
+    }
+  ],
+  "stats": {
+    "expected": 191,
+    "unexpected": 29
+  }
+}

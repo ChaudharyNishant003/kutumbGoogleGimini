@@ -1,0 +1,10 @@
+# Railway deploy uploads should NOT follow .gitignore's exclusion of
+# uploads/properties and uploads/documents — those are gitignored because
+# they're runtime content that shouldn't live in source control, but the
+# Dockerfile bakes a snapshot of them in as a one-time seed for a fresh
+# persistent volume, so the current local files need to reach the build.
+.git
+.claude
+config/config.php
+start-local-server.bat
+PROJECT_HISTORY.md

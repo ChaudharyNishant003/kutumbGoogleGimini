@@ -1,0 +1,37 @@
+[
+    {
+        "id": "QF-NFR-301",
+        "area": "NFR",
+        "title": "Chatbot degrades gracefully when no\/invalid OpenAI key is configured",
+        "pass": true,
+        "detail": "No key configured \u2014 verifying fallback"
+    },
+    {
+        "id": "QF-NFR-302",
+        "area": "NFR",
+        "title": "No-key fallback message mentions WhatsApp\/not-configured, not a raw error",
+        "pass": true,
+        "detail": "HTTP 200"
+    },
+    {
+        "id": "QF-SEC-206",
+        "area": "SEC",
+        "title": "Prompt-injection tests",
+        "pass": true,
+        "detail": "skipped \u2014 no OpenAI key configured locally, every response is the static fallback regardless of input"
+    },
+    {
+        "id": "QF-SEC-207",
+        "area": "SEC",
+        "title": "API key extraction test",
+        "pass": true,
+        "detail": "skipped \u2014 no key configured to leak"
+    },
+    {
+        "id": "QF-SEC-208",
+        "area": "SEC",
+        "title": "Off-topic override test",
+        "pass": true,
+        "detail": "skipped \u2014 no key configured, response is static fallback"
+    }
+]

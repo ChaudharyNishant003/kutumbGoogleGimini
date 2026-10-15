@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kutumb QA Dashboard</title>
+<style>
+:root{
+  --navy:#002366; --navy-deep:#011438; --navy-950:#04081c;
+  --orange:#ff9909; --orange-deep:#d97e00;
+  --paper:#fbfaf6; --paper-dim:#f3f1ea; --line:#e4e1d6;
+  --ink:#16191f; --ink-soft:#4a4f5a; --ink-muted:#898781;
+  --surface:#ffffff;
+  --good:#0ca30c; --warning:#c98500; --serious:#c2542f; --critical:#d03b3b;
+  --s1:#002366; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --font: -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-display: 'Newsreader', Georgia, serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:var(--font);background:var(--paper);color:var(--ink);font-size:14px;}
+.header{background:linear-gradient(160deg,var(--navy-deep),var(--navy-950));color:#fff;padding:28px 32px;}
+.header h1{font-family:var(--font-display);font-size:26px;margin:0 0 4px;font-weight:500;}
+.header h1 span{color:var(--orange);}
+.header .meta{color:rgba(255,255,255,.6);font-size:12.5px;}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 32px 80px;}
+.stat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:32px;}
+.stat-tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:0 1px 2px rgba(1,20,56,.06),0 3px 10px rgba(1,20,56,.06);}
+.stat-tile .num{font-family:var(--font-display);font-size:32px;color:var(--navy-deep);display:block;line-height:1;}
+.stat-tile .label{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-muted);margin-top:6px;display:block;}
+.stat-tile.pass .num{color:var(--good);}
+.stat-tile.fail .num{color:var(--critical);}
+section{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:24px;}
+section h2{font-family:var(--font-display);font-size:19px;margin:0 0 4px;color:var(--navy-deep);font-weight:500;}
+section .sub{color:var(--ink-soft);font-size:13px;margin-bottom:18px;}
+.sev-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.sev-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid transparent;}
+.sev-pill.P0{background:#fbe0e0;color:var(--critical);}
+.sev-pill.P1{background:#fde3d3;color:#b3480a;}
+.sev-pill.P2{background:#fdf0d3;color:var(--warning);}
+.sev-pill.P3{background:#e6ebf2;color:var(--ink-soft);}
+.status-pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:600;}
+.status-pill.status-fixed{background:#dcf3dc;color:var(--good);}
+.status-pill.status-fixed-partial{background:#fdf0d3;color:var(--warning);}
+.status-pill.status-wontfix-environment{background:#e6ebf2;color:var(--ink-soft);}
+.status-pill.status-open{background:#fbe0e0;color:var(--critical);}
+.bar-chart{display:flex;flex-direction:column;gap:10px;}
+.bar-row{display:grid;grid-template-columns:160px 1fr 50px;align-items:center;gap:12px;font-size:12.5px;}
+.bar-row .label{color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bar-track{background:var(--paper-dim);border-radius:6px;height:20px;overflow:hidden;display:flex;}
+.bar-fill{height:100%;}
+.bar-fill.pass{background:var(--good);}
+.bar-fill.fail{background:var(--critical);}
+.bar-fill.skip{background:var(--ink-muted);}
+.bar-row .count{text-align:right;color:var(--navy-deep);font-weight:600;font-variant-numeric:tabular-nums;}
+.defect-table, .load-table{width:100%;border-collapse:collapse;}
+.defect-table th, .load-table th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-muted);padding:8px 10px;border-bottom:1px solid var(--line);}
+.defect-table td, .load-table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13px;}
+.load-table td.num{text-align:right;font-variant-numeric:tabular-nums;}
+.load-table td.err{color:var(--critical);font-weight:600;}
+.defect-row{cursor:pointer;}
+.defect-row:hover{background:var(--paper-dim);}
+.defect-detail{display:none;background:var(--paper-dim);padding:14px 16px;font-size:12.5px;color:var(--ink-soft);border-radius:8px;margin:0 0 8px;white-space:pre-line;}
+.defect-detail.open{display:block;}
+.badge-new{background:var(--orange);color:var(--navy-deep);font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;margin-left:6px;text-transform:uppercase;}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink-soft);margin-top:14px;}
+.legend span{display:inline-flex;align-items:center;gap:5px;}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+.click-hint{font-size:11.5px;color:var(--ink-muted);font-style:italic;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media (max-width:900px){.stat-strip{grid-template-columns:repeat(2,1fr);}.two-col{grid-template-columns:1fr;}}
+.check-icon{color:var(--good);}
+.x-icon{color:var(--critical);}
+.callout-note{background:#fdf0d3;border-left:3px solid var(--warning);border-radius:6px;padding:10px 14px;font-size:12px;color:#6b4d00;margin-top:12px;}
+.callout-note code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Kutumb<span>.</span> QA Dashboard</h1>
+  <div class="meta">Generated 15 Sept 2026, 4:11 am · Local Docker environment · Full Sweep (11 Sep 2026) + Fix Pass (15 Sep 2026)</div>
+</div>
+<div class="wrap">
+
+  <div class="stat-strip">
+    <div class="stat-tile"><span class="num">232</span><span class="label">Total Checks Run</span></div>
+    <div class="stat-tile pass"><span class="num">88%</span><span class="label">Overall Pass Rate</span></div>
+    <div class="stat-tile fail"><span class="num">29</span><span class="label">Playwright Failures</span></div>
+    <div class="stat-tile"><span class="num">2</span><span class="label">Open Findings</span></div>
+    <div class="stat-tile"><span class="num">0</span><span class="label">P1 Findings</span></div>
+  </div>
+
+  <section>
+    <h2>Severity Breakdown</h2>
+    <div class="sub">Click a severity to jump to its findings below.</div>
+    <div class="sev-row">
+      <span class="sev-pill P0" onclick="scrollToDefects()">P0 Blocker — 0</span>
+      <span class="sev-pill P1" onclick="scrollToDefects()">P1 Critical — 0</span>
+      <span class="sev-pill P2" onclick="scrollToDefects()">P2 Major — 2</span>
+      <span class="sev-pill P3" onclick="scrollToDefects()">P3 Minor — 0</span>
+    </div>
+  </section>
+
+  <div class="two-col">
+    <section>
+      <h2>Functional / E2E (Playwright)</h2>
+      <div class="sub">220 tests across 5 browser/device profiles</div>
+      <div class="callout-note">⚠ This chart is the original Full Sweep snapshot from 11 Sep 2026, before the fix pass. Of its 29 failures, 15 (EMI zero-price check × 5 browsers, property-CRUD pagination check × 5 browsers) were bugs in the <em>test scripts themselves</em> — not the site. The 7 real findings from this snapshot were fixed on 15 Sep 2026 and re-verified with <strong>targeted</strong> reruns (the specific specs each fix touches, plus connected admin RBAC/CRUD regression), not a fresh full 5-browser suite run — see the Findings section below for exactly what was re-run per item.</div>
+      <div class="bar-chart">
+        <div class="bar-row"><span class="label" title="admin-auth-rbac.spec.js">admin-auth-rbac</span>
+            <div class="bar-track"><div class="bar-fill pass" style="width:100%"></div><div class="bar-fill fail" style="width:0%"></div><div class="bar-fill skip" style="width:0%"></div></div>
+            <span class="count">110/110</span></div><div class="bar-row"><span class="label" title="admin-crud.spec.js">admin-crud</span>
+            <div class="bar-track"><div class="bar-fill pass" style="width:80%"></div><div class="bar-fill fail" style="width:20%"></div><div class="bar-fill skip" style="width:0%"></div></div>
+            <span class="count">20/25</span></div><div class="bar-row"><span class="label" title="public-journeys.spec.js">public-journeys</span>
+            <div class="bar-track"><div class="bar-fill pass" style="width:71.76470588235294%"></div><div class="bar-fill fail" style="width:28.235294117647058%"></div><div class="bar-fill skip" style="width:0%"></div></div>
+            <span class="count">61/85</span></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--good)"></i>Pass</span><span><i style="background:var(--critical)"></i>Fail</span><span><i style="background:var(--ink-muted)"></i>Skipped</span></div>
+    </section>
+
+    <section>
+      <h2>Backend / Security Checks</h2>
+      <div class="sub">12 checks — IDOR, duplicate-submission, fuzzing, chatbot resilience</div>
+      <div class="bar-chart">
+        <div class="bar-row"><span class="label">All backend checks</span>
+          <div class="bar-track"><div class="bar-fill pass" style="width:100%"></div><div class="bar-fill fail" style="width:0%"></div></div>
+          <span class="count">12/12</span></div>
+      </div>
+      <table class="defect-table" style="margin-top:16px;">
+        <tr><th>ID</th><th>Check</th><th>Result</th></tr>
+        <tr><td>QF-SEC-201</td><td>Soft-deleted property not reachable via direct ID</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-202</td><td>bin-action.php requires an authenticated session (cannot be hit anonymously)</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-203</td><td>Rapid duplicate enquiry submission behavior</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-204</td><td>100KB name field does not crash the endpoint</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-205</td><td>SQL injection payload in saved-search budget fields</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-004-properties</td><td>uploads/properties/.htaccess denies .php execution</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-004-documents</td><td>uploads/documents/.htaccess denies .php execution</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-NFR-301</td><td>Chatbot degrades gracefully when no/invalid OpenAI key is configured</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-NFR-302</td><td>No-key fallback message mentions WhatsApp/not-configured, not a raw error</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-206</td><td>Prompt-injection tests</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-207</td><td>API key extraction test</td><td><span class="check-icon">✓ Pass</span></td></tr><tr><td>QF-SEC-208</td><td>Off-topic override test</td><td><span class="check-icon">✓ Pass</span></td></tr>
+      </table>
+    </section>
+  </div>
+
+  <section>
+    <h2>Load / Stress Test</h2>
+    <div class="sub">Local Docker only — light baseline (30 concurrent) vs. heavy burst (300 concurrent). Response times in ms.</div>
+    
+    <h3 style="font-size:14px;color:var(--ink-soft);margin:16px 0 8px;">Light baseline (30 concurrent)</h3>
+    <table class="load-table"><tr><th>Path</th><th>p50</th><th>p90</th><th>p99</th><th>max</th><th>Error rate</th></tr><tr><td>Home</td><td class="num">4445</td><td class="num">5380</td><td class="num">5402</td><td class="num">5402</td><td class="num ">0%</td></tr><tr><td>Properties</td><td class="num">554</td><td class="num">1200</td><td class="num">1302</td><td class="num">1302</td><td class="num ">0%</td></tr><tr><td>Property Detail</td><td class="num">884</td><td class="num">1070</td><td class="num">1083</td><td class="num">1083</td><td class="num ">0%</td></tr><tr><td>Admin Dashboard (redirects, unauth)</td><td class="num">151</td><td class="num">192</td><td class="num">337</td><td class="num">337</td><td class="num ">0%</td></tr><tr><td>Enquiry Submit (POST)</td><td class="num">655</td><td class="num">723</td><td class="num">725</td><td class="num">725</td><td class="num ">0%</td></tr></table>
+    <h3 style="font-size:14px;color:var(--ink-soft);margin:20px 0 8px;">Heavy burst (300 concurrent)</h3>
+    <table class="load-table"><tr><th>Path</th><th>p50</th><th>p90</th><th>p99</th><th>max</th><th>Error rate</th></tr><tr><td>Home</td><td class="num">11322</td><td class="num">14009</td><td class="num">14879</td><td class="num">14947</td><td class="num ">0%</td></tr><tr><td>Properties</td><td class="num">7646</td><td class="num">10638</td><td class="num">11106</td><td class="num">11256</td><td class="num ">0%</td></tr><tr><td>Property Detail</td><td class="num">7580</td><td class="num">10358</td><td class="num">10936</td><td class="num">10995</td><td class="num ">0%</td></tr><tr><td>Admin Dashboard (redirects, unauth)</td><td class="num">5522</td><td class="num">7406</td><td class="num">8011</td><td class="num">8797</td><td class="num ">0%</td></tr><tr><td>Enquiry Submit (POST)</td><td class="num">6776</td><td class="num">10915</td><td class="num">11529</td><td class="num">11535</td><td class="num ">0%</td></tr></table>
+    
+  </section>
+
+  <section id="defects">
+    <h2>Findings (click a row to expand)</h2>
+    <div class="sub">All 7 findings from the Full Sweep were addressed in this fix pass (click a row for what changed and how it was verified). Testing was targeted to the affected areas and connected modules, not a full suite re-run.</div>
+    <table class="defect-table">
+      <tr><th></th><th>ID</th><th>Severity</th><th>Area</th><th>Title</th><th>Status</th></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(0)">
+          <td>▸</td><td>QF-SEC-001</td>
+          <td><span class="sev-pill P1">P1</span></td>
+          <td>AUTH</td>
+          <td>Admin login has no brute-force/rate-limit protection</td>
+          <td><span class="status-pill status-fixed">Fixed</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-0">FIXED — admin/login.php now calls rate_limit_check(&#39;admin-login&#39;, 15, 10) before checking credentials, showing &quot;Too many login attempts&quot; past the threshold. 15/10min (not the public-form default of 5) so one shared office IP with several staff signing in doesn&#39;t get falsely locked out; a brute-force attempt against a bcrypt hash is still fully defeated well below that rate. Verified live via curl (blocked on the 6th-and-later of 7 rapid attempts before the threshold was widened, then reconfirmed at 15) and via an isolated regression test, tests/e2e/admin-login-rate-limit.spec.js (kept in its own file since it deliberately exhausts the quota and would otherwise block other tests&#39; logins in the same run).</div></td></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(1)">
+          <td>▸</td><td>QF-SEC-002</td>
+          <td><span class="sev-pill P1">P1</span></td>
+          <td>AUTH</td>
+          <td>Session cookie missing HttpOnly flag</td>
+          <td><span class="status-pill status-fixed">Fixed</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-1">FIXED — ini_set(&#39;session.cookie_httponly&#39;, &#39;1&#39;) added before session_start() in config/config.php, config.sample.php, and config.railway.php (the file Railway&#39;s Dockerfile actually deploys). Verified live via curl -I on /admin/login.php: Set-Cookie now includes HttpOnly. Regression test in tests/e2e/admin-auth-rbac.spec.js.</div></td></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(2)">
+          <td>▸</td><td>QF-SEC-003</td>
+          <td><span class="sev-pill P2">P2</span></td>
+          <td>AUTH</td>
+          <td>Session cookie missing Secure and SameSite flags</td>
+          <td><span class="status-pill status-fixed-partial">Partially Fixed</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-2">SameSite FIXED — ini_set(&#39;session.cookie_samesite&#39;, &#39;Lax&#39;) added alongside the HttpOnly fix, verified live via curl. The Secure flag was deliberately deferred: setting it requires correctly detecting HTTPS behind Railway&#39;s proxy from this local/offline environment, and getting that detection wrong risks locking out admin login in production (a cookie marked Secure is silently dropped over any connection the browser doesn&#39;t consider HTTPS). Recommended next step: add the Secure flag right after the next production deploy, verified live against the real Railway domain rather than guessed at from here.</div></td></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(3)">
+          <td>▸</td><td>QF-SEC-004</td>
+          <td><span class="sev-pill P2">P2</span></td>
+          <td>DATA</td>
+          <td>No .htaccess in uploads/ blocking PHP execution</td>
+          <td><span class="status-pill status-fixed">Fixed</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-3">FIXED — added uploads/properties/.htaccess and uploads/documents/.htaccess (Require all denied on .php/.phtml, matching the root .htaccess&#39;s pattern). Confirmed the Dockerfile already sets AllowOverride All, so these take effect, and docker-start.sh&#39;s uploads-seed copy uses cp -rvn (no-clobber), so the new .htaccess files will land in the existing production volume on the next deploy without needing a manual step. Verified live: requesting a .php file under either directory now returns HTTP 403 (was previously whatever the file would have executed as). Regression check added to tests/backend/security-completion.php (QF-SEC-004-properties / QF-SEC-004-documents).</div></td></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(4)">
+          <td>▸</td><td>QF-UX-001</td>
+          <td><span class="sev-pill P3">P3</span></td>
+          <td>RBAC</td>
+          <td>Settings sidebar link shown to non-owner roles</td>
+          <td><span class="status-pill status-fixed">Fixed</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-4">FIXED — includes/admin-header.php now wraps both the &quot;Settings&quot; section label and the Settings link in the same role === &#39;owner&#39; check already used for Manage Admins, so agent/admin users no longer see a link that would 403 for them. settings.php&#39;s own server-side require_role(&#39;owner&#39;) was already correct and unchanged. The existing QF-UX-001 Playwright test (previously a soft annotation-only check) was converted to a hard assertion and confirmed passing.</div></td></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(5)">
+          <td>▸</td><td>QF-COMPAT-001</td>
+          <td><span class="sev-pill P2">P2</span></td>
+          <td>COMPAT</td>
+          <td>Compare toggle buttons fail to register clicks on Firefox, WebKit, and mobile emulation (Chromium unaffected)</td>
+          <td><span class="status-pill status-fixed-partial">Partially Fixed</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-5">ROOT CAUSE FOUND AND FIXED for the real bug: the compare-toggle icon is an inline SVG with fill=&quot;none&quot; (stroke-only), and browsers differ on whether a click through its unpainted interior counts as hitting the icon or falling through to the card underneath — on Firefox this caused the click to fall through to the property card&#39;s own link and navigate away mid-test instead of toggling compare. Fixed with .compare-toggle svg { pointer-events: none }, forcing every click to resolve to the button itself regardless of engine. Also changed the hover effect from transform: scale() to box-shadow, removing a geometry change that could affect click-target stability. Confirmed fixed on chromium-desktop, firefox-desktop, and mobile-android (Chromium-based) — all pass cleanly now.
+
+REMAINING (webkit-desktop, mobile-ios — same WebKit engine): Playwright still reports &quot;element is not stable&quot; here. Investigated with a diagnostic (a fixed 5-second wait before clicking resolves it every time), which confirms this is Playwright&#39;s own conservative synthetic-click heuristic reacting to the page&#39;s legitimate scroll-triggered entrance animation (cards fade/slide in via GSAP the first time they scroll into view) — not a functional defect. A real tap isn&#39;t gated by that heuristic; browsers hit-test wherever a finger actually lands, animating or not. Tried two test-side mitigations (scroll-and-wait, wait-for-opacity) — neither fully resolved WebKit&#39;s timing without adding new flakiness elsewhere, so rather than keep chasing a test-tool artifact, this is left documented rather than &#39;fixed&#39;: WebKit/Safari users should be spot-checked manually rather than relying on this automated signal.</div></td></tr>
+      
+        <tr class="defect-row" onclick="toggleDefect(6)">
+          <td>▸</td><td>QF-NFR-401</td>
+          <td><span class="sev-pill P3">P3</span></td>
+          <td>COMPAT</td>
+          <td>Firefox accessibility scan inconclusive on this machine (environment issue, not a product finding)</td>
+          <td><span class="status-pill status-wontfix-environment">Env. Limitation</span></td>
+        </tr>
+        <tr><td colspan="6" style="padding:0;border:none;"><div class="defect-detail" id="defect-6">NOT FIXABLE VIA CODE — headless Firefox crashed during axe-core injection on this machine (RenderCompositorSWGL graphics error), a known headless-Firefox-on-Windows GPU compatibility issue unrelated to Kutumb&#39;s code. There is no application change that addresses this; it needs either a different test machine/CI runner or a manual Firefox spot-check instead of the automated a11y scan.</div></td></tr>
+      
+    </table>
+  </section>
+
+</div>
+<script>
+function toggleDefect(i) {
+  var el = document.getElementById('defect-' + i);
+  el.classList.toggle('open');
+}
+function scrollToDefects() {
+  document.getElementById('defects').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

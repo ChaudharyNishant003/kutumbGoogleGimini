@@ -1,0 +1,8 @@
+.git
+.claude
+config/config.php
+start-local-server.bat
+PROJECT_HISTORY.md
+.env
+docker-compose.yml
+database/local_backup_*.sql

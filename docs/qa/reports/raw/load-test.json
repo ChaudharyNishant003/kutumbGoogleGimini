@@ -1,0 +1,106 @@
+{
+  "lightBaseline": [
+    {
+      "target": "Home",
+      "concurrency": 30,
+      "min": 1683,
+      "p50": 4445,
+      "p90": 5380,
+      "p99": 5402,
+      "max": 5402,
+      "errorRate": 0
+    },
+    {
+      "target": "Properties",
+      "concurrency": 30,
+      "min": 169,
+      "p50": 554,
+      "p90": 1200,
+      "p99": 1302,
+      "max": 1302,
+      "errorRate": 0
+    },
+    {
+      "target": "Property Detail",
+      "concurrency": 30,
+      "min": 384,
+      "p50": 884,
+      "p90": 1070,
+      "p99": 1083,
+      "max": 1083,
+      "errorRate": 0
+    },
+    {
+      "target": "Admin Dashboard (redirects, unauth)",
+      "concurrency": 30,
+      "min": 114,
+      "p50": 151,
+      "p90": 192,
+      "p99": 337,
+      "max": 337,
+      "errorRate": 0
+    },
+    {
+      "target": "Enquiry Submit (POST)",
+      "concurrency": 30,
+      "min": 538,
+      "p50": 655,
+      "p90": 723,
+      "p99": 725,
+      "max": 725,
+      "errorRate": 0
+    }
+  ],
+  "heavyBurst": [
+    {
+      "target": "Home",
+      "concurrency": 300,
+      "min": 4202,
+      "p50": 11322,
+      "p90": 14009,
+      "p99": 14879,
+      "max": 14947,
+      "errorRate": 0
+    },
+    {
+      "target": "Properties",
+      "concurrency": 300,
+      "min": 2565,
+      "p50": 7646,
+      "p90": 10638,
+      "p99": 11106,
+      "max": 11256,
+      "errorRate": 0
+    },
+    {
+      "target": "Property Detail",
+      "concurrency": 300,
+      "min": 2013,
+      "p50": 7580,
+      "p90": 10358,
+      "p99": 10936,
+      "max": 10995,
+      "errorRate": 0
+    },
+    {
+      "target": "Admin Dashboard (redirects, unauth)",
+      "concurrency": 300,
+      "min": 2031,
+      "p50": 5522,
+      "p90": 7406,
+      "p99": 8011,
+      "max": 8797,
+      "errorRate": 0
+    },
+    {
+      "target": "Enquiry Submit (POST)",
+      "concurrency": 300,
+      "min": 2910,
+      "p50": 6776,
+      "p90": 10915,
+      "p99": 11529,
+      "max": 11535,
+      "errorRate": 0
+    }
+  ]
+}

@@ -1,0 +1,384 @@
+/* Kutumb Realty — admin panel. Reuses tokens from style.css. */
+
+body.admin { background: var(--paper-dim); }
+.admin-shell { display: flex; min-height: 100vh; }
+.admin-topbar-mobile { display: none; }
+.admin-sidebar {
+  width: 250px; flex-shrink: 0;
+  background: linear-gradient(175deg, var(--navy-deep), var(--navy-950)); color: rgba(255,255,255,0.8);
+  padding: 30px 18px; display: flex; flex-direction: column;
+  /* Pinned to the viewport so only .admin-main scrolls — previously the
+     sidebar was a normal flex child, so it scrolled away with the page and
+     stretched to match tall content, leaving a gap between the nav links
+     (top-aligned within that stretched box) and "Log out" at the true
+     bottom. overflow-y: auto here also future-proofs the sidebar itself:
+     if nav items ever exceed the viewport height, they scroll independently
+     (only via the user's own wheel/trackpad — a browser never auto-scrolls
+     on hover) instead of overflowing into the page. */
+  position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 50;
+}
+.admin-sidebar .brand { display: block; text-align: center; font-family: var(--font-display); color: var(--white); font-size: 21px; margin-bottom: 18px; }
+.admin-sidebar .brand span { color: var(--orange); }
+
+.sidebar-visit-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-bottom: 24px; padding: 10px 16px; border-radius: 999px;
+  background: rgba(255,153,9,0.08); border: 1px solid rgba(255,153,9,0.4);
+  color: var(--orange); font-size: 13.5px; font-weight: 500; text-align: center;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.sidebar-visit-btn:hover { background: var(--orange); border-color: var(--orange); color: var(--white); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255,153,9,0.35); }
+.sidebar-visit-btn svg { flex-shrink: 0; }
+
+/* Not flex: 1 — that stretched this box to fill the sidebar, but its links
+   (default-aligned to the top of a flex column) stayed clustered there,
+   leaving a gap below the last link before "Log out". Sized to its own
+   content instead, so "Log out" always sits directly after it; any leftover
+   space on a tall viewport just becomes empty sidebar background below
+   "Log out" rather than a gap wedged between the two. */
+.admin-nav { display: flex; flex-direction: column; gap: 3px; }
+.admin-nav a {
+  position: relative;
+  color: rgba(255,255,255,0.68); padding: 11px 16px; border-radius: 9px; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.admin-nav a:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+/* Only the text itself is marked as selected — no side line, no full-row
+   background — via a plain text-decoration underline, which naturally hugs
+   the text's own width rather than the whole flex row. currentColor keeps
+   the underline exactly matching the (white) active text color. */
+.admin-nav a.active {
+  background: none; color: var(--white);
+  text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 4px; text-decoration-thickness: 1.5px;
+}
+.admin-sidebar .logout { color: rgba(255,255,255,0.55); font-size: 13px; padding: 11px 14px; text-align: center; }
+.admin-nav-label { text-align: center; }
+.nav-badge { background: var(--orange); color: var(--navy-deep); font-size: 11px; font-weight: 700; border-radius: 999px; padding: 1px 7px; margin-left: 6px; text-decoration: none; }
+
+.field-required-mark { color: #d64545; margin-left: 3px; }
+.field-badge-optional {
+  display: inline-block; background: var(--paper-dim); color: var(--ink-soft);
+  font-size: 10.5px; font-weight: 500; border-radius: var(--radius-sm);
+  padding: 1px 7px; margin-left: 7px; vertical-align: middle;
+}
+.admin-main { flex: 1; padding: 32px 36px; max-width: 1200px; margin-left: 250px; }
+.admin-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; gap: 16px; }
+.admin-topbar h1 { font-size: 24px; margin: 0; }
+.admin-topbar-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+
+.admin-search { display: flex; align-items: center; gap: 8px; }
+.admin-search input[type="search"] {
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font-size: 13.5px;
+  background: var(--white); width: 220px; font-family: var(--font-body); color: var(--ink);
+}
+.admin-search-clear { font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; }
+
+/* Persistent success confirmation — deliberately NOT a .form-note (those get
+   auto-converted into a fading toast by admin.js). Stays on screen for as
+   long as the URL carries ?saved=1&id=X, same lifetime as the matching
+   card's .just-saved outline above. */
+.save-banner {
+  display: flex; align-items: center; gap: 12px; background: #ebfcea; color: #1c6e2f;
+  border: 1px solid #b8e6c2; border-radius: var(--radius-md); padding: 14px 18px;
+  margin-bottom: 20px; font-size: 14px;
+}
+.save-banner svg { flex-shrink: 0; }
+.save-banner strong { font-weight: 600; }
+.save-banner-id { color: #4a7a55; font-size: 12.5px; margin-left: 6px; }
+.admin-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-card); }
+
+.autofill-card { background: var(--paper-dim); border-style: dashed; }
+.autofill-card label { font-weight: 600; display: block; margin-bottom: 6px; color: var(--navy-deep); }
+.autofill-card p { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 10px; }
+.autofill-card textarea { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 12px; font: inherit; resize: vertical; }
+.autofill-actions { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.autofill-status { font-size: 13px; color: var(--ink-soft); }
+
+.pagination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--line); }
+.pagination-info { font-size: 12.5px; color: var(--ink-soft); }
+.pagination-controls { display: flex; gap: 4px; flex-wrap: wrap; }
+.page-btn {
+  min-width: 32px; height: 32px; padding: 0 8px; border-radius: 7px; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--ink);
+  background: var(--white); text-decoration: none;
+}
+.page-btn:hover { border-color: var(--navy); }
+.page-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.page-btn.disabled { pointer-events: none; opacity: 0.4; }
+.pagination-perpage { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-soft); }
+.pagination-perpage select { padding: 5px 8px; border-radius: 7px; border: 1px solid var(--line); background: var(--white); font-size: 13px; color: var(--ink); }
+
+@media (max-width: 640px) {
+  .pagination { flex-direction: column; align-items: stretch; }
+  .pagination-controls { justify-content: center; }
+}
+
+.admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.admin-table th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.admin-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.admin-table tr { transition: background 0.2s; }
+.admin-table tbody tr:hover { background: var(--paper-dim); }
+.admin-table tr:last-child td { border-bottom: none; }
+.admin-table img.thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; }
+.admin-table .row-actions { display: flex; gap: 10px; }
+.admin-table .row-actions a, .admin-table .row-actions button { font-size: 13px; }
+
+/* Photo cards for tabs whose items have an image — mirrors the public site's
+   photo/navy-overlay/white-text/orange-highlight treatment (see
+   .corridor-journey-panel in style.css) instead of a plain data table.
+   Fixed 3 columns (not "as many as fit") on purpose: a variable column
+   count can't be reasoned about by Per Page values otherwise. A short
+   final row is left as plain empty space next to the last card/box —
+   deliberately not stretched to fill the gap. */
+.admin-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .admin-card-grid { grid-template-columns: 1fr; } }
+.admin-photo-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); display: flex; flex-direction: column; }
+.admin-photo-card.row-collapsing { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 0; transform: translateY(-10px) scale(0.98); }
+.admin-photo-card.card-delete-message { display: flex; align-items: center; justify-content: center; min-height: 220px; }
+.admin-photo-card.card-delete-message .row-delete-message { border-radius: var(--radius-sm); }
+.admin-photo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+/* Persists as long as ?saved=1&id=X is in the URL — see the save-banner
+   block on each list page — unlike the old anchored toast, this doesn't
+   fade on its own; it clears when the page is reloaded without that id, or
+   the user navigates elsewhere (e.g. to edit a different item). */
+.admin-photo-card.just-saved { outline: 3px solid var(--orange); outline-offset: 3px; box-shadow: 0 0 0 6px rgba(255,153,9,0.16), var(--shadow-lift); }
+/* max-height caps the aspect-ratio math so a card doesn't get an oversized
+   photo when it spans multiple grid columns (the odd-row-filler rule above,
+   or a wide viewport) — width alone would otherwise scale the height up
+   proportionally, well past a normal single-column card's photo height. */
+.admin-photo-card-media { position: relative; aspect-ratio: 4/3; max-height: 260px; background: var(--navy-deep); overflow: hidden; }
+.admin-photo-card-media img { width: 100%; height: 100%; object-fit: cover; }
+.admin-photo-card-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(1,20,56,0.88) 100%); pointer-events: none; }
+.admin-photo-card-badge { position: absolute; top: 12px; left: 12px; z-index: 2; background: var(--orange); color: var(--navy-deep); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; }
+.admin-photo-card-overlay { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 14px 16px; }
+.admin-photo-card-overlay h3 { margin: 0 0 2px; font-size: 16px; color: var(--white); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.admin-photo-card-overlay p { margin: 0; font-size: 12.5px; color: rgba(255,255,255,0.82); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.admin-photo-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.admin-photo-card-highlight { display: flex; align-items: baseline; justify-content: space-between; }
+.admin-photo-card-highlight .label { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+.admin-photo-card-highlight .value { font-size: 14px; font-weight: 600; color: var(--orange-deep); }
+.admin-photo-card-added { font-size: 12px; color: var(--ink-soft); }
+.admin-photo-card-actions { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); display: flex; gap: 12px; align-items: center; }
+.admin-photo-card-actions a, .admin-photo-card-actions button { font-size: 13px; }
+.admin-photo-card-actions form { margin: 0; }
+
+/* Data cards — same shell as .admin-photo-card (background/shadow/hover-lift/
+   delete-collapse animation, reused via that class) but for tabs with no
+   photo to show: Leads, Follow-Ups, Saved Searches, Manage Admins. The
+   header gets the same navy-gradient treatment as a photo card's image
+   area (plus a decorative wordmark standing in for the missing photo)
+   so these read as the same design language instead of a plain white box. */
+.admin-data-card-header {
+  position: relative; overflow: hidden; min-height: 108px;
+  padding: 18px 16px 14px; display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(160deg, var(--navy-deep), var(--navy-950));
+}
+.admin-data-card-header::before {
+  content: 'Kutumb'; position: absolute; right: -6px; bottom: -18px; z-index: 0;
+  font-family: var(--font-display); font-weight: 600; font-size: 52px; line-height: 1;
+  color: rgba(255,255,255,0.07); white-space: nowrap; pointer-events: none;
+}
+.admin-data-card-header h3 { margin: 0 0 3px; font-size: 15px; color: var(--white); position: relative; z-index: 1; }
+.admin-data-card-sub { font-size: 12.5px; color: rgba(255,255,255,0.75); position: relative; z-index: 1; }
+.admin-data-card-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; position: relative; z-index: 1; }
+.admin-data-card-badge { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding: 3px 9px; border-radius: 999px; background: var(--paper-dim); color: var(--ink-soft); }
+.admin-data-card-badge.hot { background: #fde3d3; color: #b3480a; }
+.admin-data-card-badge.warm { background: #fdf0d3; color: #92690a; }
+.admin-data-card-badge.cold { background: #e6ebf2; color: var(--ink-soft); }
+.admin-data-card-badge.overdue { background: #fbe0e0; color: #b3231f; }
+.admin-data-card-badge.active { background: #ebfcea; color: #1c6e2f; }
+.admin-data-card-badge.inactive { background: #fbe0e0; color: #b3231f; }
+
+.admin-data-card-rows { padding: 12px 16px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+.admin-data-card-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
+.admin-data-card-row .label { color: var(--ink-soft); flex-shrink: 0; }
+.admin-data-card-row .value { color: var(--ink); text-align: right; }
+.admin-data-card-row .value.highlight { color: var(--orange-deep); font-weight: 600; }
+.admin-data-card-row select { font-size: 13px; padding: 5px 8px; border-radius: 7px; border: 1px solid var(--line); background: var(--white); max-width: 160px; }
+
+.admin-data-card-footer { padding: 12px 16px 16px; border-top: 1px solid var(--line); display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.admin-data-card-footer a, .admin-data-card-footer button { font-size: 13px; }
+.admin-data-card-footer form { margin: 0; }
+
+.stat-cards { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-card { position: relative; overflow: hidden; display: block; text-decoration: none; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-card); transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+.stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-deep)); }
+.stat-card .num { font-family: var(--font-display); font-size: 31px; color: var(--navy-deep); }
+.stat-card .label { font-size: 12.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Restricted to exactly the 7 Dashboard boxes that link through to an admin
+   page (Total Listings, Featured, Corridors, Enquiries, Total Leads,
+   Conversion Rate, New) — not a general .stat-card treatment. */
+.stat-card-linked { cursor: pointer; background: var(--navy); transition: background 0.3s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+.stat-card-linked::before { background: linear-gradient(90deg, var(--orange), var(--orange-deep)); transition: background 0.3s var(--ease); }
+.stat-card-linked .num, .stat-card-linked .label { transition: color 0.3s var(--ease); }
+.stat-card-linked .num { color: var(--white); }
+.stat-card-linked .label { color: rgba(255,255,255,0.75); }
+.stat-card-linked:hover { background: var(--orange); }
+.stat-card-linked:hover::before { background: var(--navy); }
+.stat-card-linked:hover .num, .stat-card-linked:hover .label { color: var(--navy-deep); }
+
+.login-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--navy-deep), var(--navy-950)); }
+.login-card { width: 380px; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.5); border-radius: var(--radius-lg); padding: 38px; box-shadow: var(--shadow-lift); }
+.login-card .brand { font-family: var(--font-display); font-size: 24px; color: var(--navy-deep); margin-bottom: 6px; }
+.login-card .brand span { color: var(--orange); }
+
+.btn-danger { background: transparent; border: 1px solid #d64545; color: #d64545; }
+.btn-danger:hover { background: #d64545; color: var(--white); }
+
+.lead-score { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 12px; font-weight: 500; }
+.lead-score.hot { background: #fde3d3; color: #b3480a; }
+.lead-score.warm { background: #fdf0d3; color: #92690a; }
+.lead-score.cold { background: #e6ebf2; color: var(--ink-soft); }
+
+.status-badge { display: inline-block; padding: 2px 9px; border-radius: 100px; font-size: 11.5px; font-weight: 500; margin-left: 6px; }
+.status-badge.overdue { background: #fbe0e0; color: #b3231f; }
+
+.admin-filters select, .inline-form select { border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-family: var(--font-body); font-size: 13px; background: var(--white); }
+.inline-form { margin: 0; }
+
+.btn-link-followup { background: none; border: none; padding: 0; cursor: pointer; font-size: 13px; color: var(--navy); font-family: var(--font-body); }
+.btn-link-followup:hover { color: var(--navy-deep); text-decoration: underline; }
+
+/* A real popup (native <dialog>, opened via showModal()) instead of
+   expanding inline in the card — the browser renders it in the top layer,
+   completely outside the card's box, so opening it never grows the card
+   and never stretches unrelated sibling cards in the same grid row. */
+.followup-modal { border: none; border-radius: var(--radius-md); padding: 22px; max-width: 360px; width: calc(100% - 40px); box-shadow: var(--shadow-lift); }
+.followup-modal::backdrop { background: rgba(1,20,56,0.45); }
+.followup-modal h4 { margin: 0 0 16px; font-size: 16px; color: var(--navy-deep); }
+.followup-modal .form-field { margin-bottom: 12px; }
+.followup-modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+.followup-modal .lead-message { margin: 14px 0 0; font-size: 13px; color: var(--ink-soft); }
+
+.admin-table tr.overdue td:first-child { border-left: 3px solid #b3231f; }
+
+.bin-empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 56px 20px; color: var(--ink-faint); }
+.bin-empty-state svg { color: var(--line); }
+.bin-empty-state p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+.row-delete-message { text-align: center; padding: 16px; font-size: 13.5px; color: #1c6e2f; background: #ebfcea; }
+.admin-table tr.row-collapsing { transition: opacity 0.4s ease, transform 0.4s ease; opacity: 0; transform: translateY(-10px); }
+
+.admin-nav-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.4); padding: 14px 14px 4px; }
+.admin-nav-label-top { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; color: var(--gold, #c9a154); padding: 20px 14px 6px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 6px; }
+.admin-nav-label-top:first-child { border-top: none; margin-top: 0; padding-top: 4px; }
+
+.flow-transcript { max-height: 340px; overflow-y: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px; margin: 12px 0; background: var(--paper-dim); }
+.flow-bubble { padding: 8px 12px; border-radius: var(--radius-sm); margin-bottom: 8px; font-size: 13.5px; max-width: 85%; }
+.flow-bubble-caller { background: var(--white); border: 1px solid var(--line); margin-right: auto; }
+.flow-bubble-agent { background: var(--navy-deep, #011438); color: var(--white); margin-left: auto; }
+
+.funnel-table { width: 100%; border-collapse: collapse; }
+.funnel-table td { padding: 8px 4px; vertical-align: middle; font-size: 13.5px; }
+.funnel-row-linked { cursor: pointer; transition: background 0.2s var(--ease); }
+.funnel-row-linked:hover { background: var(--paper-dim); }
+.bar-row { background: var(--paper-dim); border-radius: 6px; height: 18px; overflow: hidden; }
+@keyframes bar-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.bar-fill { background: linear-gradient(90deg, var(--orange), var(--orange-deep)); height: 100%; border-radius: 6px; transform-origin: left; animation: bar-grow-x 0.8s var(--ease) both; }
+.bar-row-labeled { display: grid; grid-template-columns: 140px 1fr 36px; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12.5px; }
+.bar-row-labeled span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-soft); }
+.bar-row-labeled strong { text-align: right; color: var(--navy-deep); }
+/* Every bar-row-labeled on the Dashboard is now an <a> (click-through to a
+   filtered/searched admin page) — reset default link styling and add a
+   hover affordance so it doesn't look like plain inert text. */
+a.bar-row-linked { text-decoration: none; color: inherit; border-radius: 6px; padding: 4px 6px; margin: -4px -6px 6px; transition: background 0.2s var(--ease); }
+a.bar-row-linked:hover { background: var(--paper-dim); }
+a.bar-row-linked:hover span { color: var(--navy-deep); }
+
+.admin-filter-active { display: flex; align-items: center; gap: 10px; background: var(--paper-dim); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 16px; margin: -8px 0 20px; font-size: 13.5px; color: var(--ink-soft); }
+.admin-filter-active strong { color: var(--navy-deep); }
+.admin-filter-active a { margin-left: auto; font-size: 12.5px; }
+.trend-chart { display: flex; align-items: flex-end; gap: 3px; height: 100px; }
+@keyframes bar-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.trend-bar { flex: 1; background: linear-gradient(180deg, var(--orange), var(--orange-deep)); border-radius: 3px 3px 0 0; min-height: 4px; transform-origin: bottom; animation: bar-grow-y 0.6s var(--ease) both; }
+
+.dashboard-analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.dashboard-analytics-grid-3 { grid-template-columns: 1fr 1fr 1fr; margin-top: 20px; }
+@media (max-width: 960px) { .dashboard-analytics-grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .dashboard-analytics-grid, .dashboard-analytics-grid-3 { grid-template-columns: 1fr; } }
+
+@media (max-width: 860px) {
+  .admin-shell { flex-direction: column; }
+
+  /* Slim top bar + full-screen slide-in menu, replacing the old "wrap the
+     sidebar into rows" approach — 12 nav links wrapped into cramped rows
+     was the "distorted navbar" on real phones. */
+  .admin-topbar-mobile {
+    display: flex; align-items: center; justify-content: flex-start; gap: 14px;
+    background: var(--navy-deep); padding: 14px 18px; position: sticky; top: 0; z-index: 100;
+  }
+  .admin-topbar-mobile .brand { font-family: var(--font-display); color: var(--white); font-size: 19px; }
+  .admin-topbar-mobile .brand span { color: var(--orange); }
+  .admin-nav-toggle { background: none; border: none; color: var(--white); padding: 6px; cursor: pointer; }
+
+  .admin-sidebar {
+    position: fixed; inset: 0; z-index: 90; width: 100%;
+    transform: translateX(-100%); transition: transform 0.3s var(--ease);
+    padding-top: 70px; overflow-y: auto;
+  }
+  .admin-sidebar.open { transform: translateX(0); }
+  .admin-sidebar .brand { display: none; } /* shown in the sticky top bar instead */
+
+  .admin-nav { flex-direction: column; }
+  .admin-nav a { padding: 14px 16px; font-size: 16px; }
+
+  .admin-main { padding: 20px 16px; max-width: 100%; margin-left: 0; }
+  .stat-cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .admin-topbar { flex-wrap: wrap; gap: 12px; }
+  .admin-topbar-actions { width: 100%; margin-left: 0; }
+  .admin-search { flex: 1; }
+  .admin-search input[type="search"] { width: 100%; }
+
+  /* Data tables: a plain <table> forces its own min width and slides/
+     overflows sideways out of its container on a narrow screen. Turn each
+     row into a stacked card instead — no horizontal scrolling at all. */
+  .admin-table thead { display: none; }
+  .admin-table, .admin-table tbody, .admin-table tr, .admin-table td { display: block; width: 100%; }
+  .admin-table { border: none; }
+  .admin-table tr { border: 1px solid var(--line); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 12px; }
+  .admin-table td {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 7px 0; border-bottom: 1px solid var(--paper-dim); text-align: right;
+  }
+  .admin-table tr:last-child { margin-bottom: 0; }
+  .admin-table td:last-child { border-bottom: none; }
+  .admin-table td[data-label]::before { content: attr(data-label); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); text-align: left; }
+  .admin-table td:not([data-label])::before, .admin-table td[data-label=""]::before { content: none; }
+  .admin-table td:not([data-label]), .admin-table td[data-label=""] { justify-content: flex-end; }
+  .admin-table img.thumb { margin-left: auto; }
+}
+
+/* ---------- AI data pages ---------- */
+.maps-link-helper { background: var(--paper-dim); border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; }
+.maps-link-status { font-size: 12.5px; margin: 6px 0 0; min-height: 1em; }
+.maps-link-status.ok { color: #1c6e2f; }
+.maps-link-status.warn { color: #a34a00; }
+.ai-status { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--paper-dim); color: var(--ink-soft); }
+.ai-status-answered { background: #E9F5EE; color: #1F7A44; }
+.ai-status-fallback, .ai-status-refused { background: #fff1e0; color: #a34a00; }
+.ai-status-error { background: #fde8e8; color: #b42318; }
+.admin-table tr.ai-gap { background: #fffaf2; }
+.admin-note-warn { font-size: 13px; padding: 10px 14px; border-radius: 8px; background: #fff1e0; color: #8a4200; margin: 0 0 16px; }
+.pill-row .pill.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.flow-bubble-system { background: var(--paper-dim); color: var(--ink-soft); margin: 0 auto 8px; font-size: 12.5px; }
+.flow-bubble-interrupted { opacity: 0.7; border-style: dashed; }
+.flow-bubble-meta { display: block; font-size: 11px; opacity: 0.75; margin-top: 3px; }
+.flow-bubble-highlight { outline: 3px solid var(--orange); outline-offset: 2px; }
+/* AI Calling pages have wide data tables: let the main column shrink (flex
+   min-width) and scroll a table inside its card instead of the whole page. */
+.admin-main { min-width: 0; }
+.ai-page .admin-card { overflow-x: auto; }
+.ai-page .admin-table td, .ai-page .admin-table th { vertical-align: top; }
+
+/* Website AI conversations (admin/ai-visitor.php, lead page "Website chats") */
+.ai-status-gated { background: #eef2fb; color: var(--navy); }
+.ai-visit { border-top: 1px solid var(--line); padding: 12px 0 4px; }
+.ai-visit:first-child { border-top: 0; padding-top: 0; }
+.ai-visit-head { font-size: 13px; font-weight: 600; margin: 0 0 8px; color: var(--navy); }
+.ai-turn { padding: 8px 10px; border-radius: 8px; margin-bottom: 8px; background: var(--paper-dim); font-size: 13.5px; }
+.ai-turn.ai-gap { background: #fffaf2; }
+.ai-turn-meta { font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.ai-turn-q { margin-bottom: 4px; }
+.ai-turn-a { color: var(--ink-soft); }

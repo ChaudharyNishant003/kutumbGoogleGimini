@@ -1,0 +1,6 @@
+# Defense-in-depth: uploaded files (property photos, RERA/floor-plan PDFs)
+# should never be executable even if a malicious file slipped past the
+# upload MIME/extension checks in includes/functions.php.
+<FilesMatch "\.(php|phar|phtml|php[0-9]?)$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,51 @@
+[
+    {
+        "id": "QF-SEC-201",
+        "area": "ISO",
+        "title": "Soft-deleted property not reachable via direct ID",
+        "pass": true,
+        "detail": "HTTP 404, correctly returned not-found"
+    },
+    {
+        "id": "QF-SEC-202",
+        "area": "ISO",
+        "title": "bin-action.php requires an authenticated session (cannot be hit anonymously)",
+        "pass": true,
+        "detail": "Confirmed via code read: bin-action.php calls require_admin() before any DB action \u2014 not independently re-tested via raw HTTP here since it needs a live session cookie (covered by Playwright RBAC suite instead)."
+    },
+    {
+        "id": "QF-SEC-203",
+        "area": "VAL",
+        "title": "Rapid duplicate enquiry submission behavior",
+        "pass": true,
+        "detail": "3 rapid submits created 3 row(s) \u2014 no crash, no duplicate-key error. Business rule: enquiries are intentionally not deduplicated (rate-limited at 5\/10min instead, already proven in the earlier sweep)."
+    },
+    {
+        "id": "QF-SEC-204",
+        "area": "VAL",
+        "title": "100KB name field does not crash the endpoint",
+        "pass": true,
+        "detail": "HTTP 200"
+    },
+    {
+        "id": "QF-SEC-205",
+        "area": "SEC",
+        "title": "SQL injection payload in saved-search budget fields",
+        "pass": true,
+        "detail": "HTTP 200 \u2014 handled cleanly (PDO prepared statements hold)"
+    },
+    {
+        "id": "QF-SEC-004-properties",
+        "area": "DATA",
+        "title": "uploads\/properties\/.htaccess denies .php execution",
+        "pass": true,
+        "detail": "HTTP 403 (expected 403)"
+    },
+    {
+        "id": "QF-SEC-004-documents",
+        "area": "DATA",
+        "title": "uploads\/documents\/.htaccess denies .php execution",
+        "pass": true,
+        "detail": "HTTP 403 (expected 403)"
+    }
+]
